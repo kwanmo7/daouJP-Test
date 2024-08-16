@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="scheduler.mapper.SchedulerMapper">
-  <insert id="insertRecord" parameterType="Record">
+  <insert id="insertRecord" parameterType="scheduler.model.Record">
     insert into record
       (
         time,
@@ -17,7 +17,7 @@
     values
       (
         #{time},
-        #{subscribers}.
+        #{subscribers},
         #{dropouts},
         #{paymentAmount},
         #{amountUsed},

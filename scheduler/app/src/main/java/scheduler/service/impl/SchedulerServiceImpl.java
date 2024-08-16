@@ -65,7 +65,9 @@ public class SchedulerServiceImpl implements SchedulerService {
   private void processRecordForTxt(String[] input){
     try{
       Record record = RecordUtil.createRecord(input, DATE_TIME_FORMATTER);
-      insertRecord(record);
+      if(record != null){
+        insertRecord(record);
+      }
     }catch (Exception e){
       // 오류 발생시 insert 하지 않고 다음 파일로 넘어감
       e.printStackTrace();
@@ -76,7 +78,9 @@ public class SchedulerServiceImpl implements SchedulerService {
   private void processRecordForCsv(CSVRecord csvRecord){
     try{
       Record record = RecordUtil.createRecord(csvRecord, DATE_TIME_FORMATTER);
-      insertRecord(record);
+      if(record != null){
+        insertRecord(record);
+      }
     }catch (Exception e){
       // 오류 발생시 insert 하지 않고 다음 파일로 넘어감
       e.printStackTrace();

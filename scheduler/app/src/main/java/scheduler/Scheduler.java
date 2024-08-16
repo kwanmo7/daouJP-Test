@@ -15,7 +15,11 @@ public class Scheduler {
 
   @Scheduled(cron = "0 0 0 * * ?") // 매일 자정에 실행
   public void getFile(){
-    String filePath = "";
+    processFiles();
+  }
+
+  private void processFiles(){
+    String filePath = "input/";
     File dir = new File(filePath);
     if(dir.isDirectory()){
       File[] files = dir.listFiles();
@@ -28,4 +32,5 @@ public class Scheduler {
       }
     }
   }
+
 }
