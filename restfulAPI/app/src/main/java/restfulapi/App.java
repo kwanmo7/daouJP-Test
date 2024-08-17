@@ -3,12 +3,13 @@
  */
 package restfulapi;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println("start");
+        SpringApplication.run(App.class, args);
     }
 }

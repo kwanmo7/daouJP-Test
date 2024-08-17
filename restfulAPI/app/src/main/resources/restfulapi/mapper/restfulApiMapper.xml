@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="restfulapi.mapper.RestfulApiMapper">
+  <resultMap id="RecordMap" type="restfulapi.dto.RecordDTO">
+    <id column="id" property="id"/>
+    <result column="time" property="time"/>
+    <result column="subscribers" property="subscribers"/>
+    <result column="dropouts" property="dropouts"/>
+    <result column="payment_amount" property="paymentAmount"/>
+    <result column="amount_used" property="amountUsed"/>
+    <result column="sales_amount" property="salesAmount"/>
+  </resultMap>
+
+  <!-- 시간대별 전체항목 조회 -->
+  <select id="selectAllRecord" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      subscribers,
+      dropouts,
+      payment_amount,
+      amount_used,
+      sales_amount
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+
+  <!-- 시간대별 가입자수 조회 -->
+  <select id="selectSubscribers" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      subscribers
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+
+  <!-- 시간대별 탈퇴자수 조회 -->
+  <select id="selectDropouts" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      dropouts
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+
+  <!-- 시간대별 결제금액 조회 -->
+  <select id="selectPaymentAmount" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      payment_amount
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+
+  <!-- 시간대별 사용금액 조회 -->
+  <select id="selectAmountUsed" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      amount_used
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+
+  <!-- 시간대별 매출금액 조회 -->
+  <select id="selectSalesAmount" resultMap="RecordMap">
+    SELECT
+      id,
+      time,
+      sales_amount
+    FROM
+      record
+    WHERE
+      time BETWEEN #{start} and #{end}
+    order by
+      id desc
+  </select>
+  
+  <!-- 수정 -->
+  <update id="updateRecord" parameterType="restfulapi.dto.RecordDTO">
+    UPDATE
+      record
+    SET
+      time = #{time},
+      subscribers = #{subscribers},
+      dropouts = #{dropouts},
+      payment_amount = #{paymentAmount},
+      amount_used = #{amountUsed},
+      sales_amount = #{salesAmount}
+    WHERE
+      id = #{id}
+  </update>
+
+  <!-- 입력 -->
+  <insert id="insertRecord" parameterType="restfulapi.dto.RecordDTO">
+    insert into record
+    (
+      time,
+      subscribers,
+      dropouts,
+      payment_amount,
+      amount_used,
+      sales_amount
+    )
+    values
+    (
+      #{time},
+      #{subscribers},
+      #{dropouts},
+      #{paymentAmount},
+      #{amountUsed},
+      #{salesAmount}
+    )
+  </insert>
+
+  <!-- 삭제 -->
+  <delete id="deleteRecord" parameterType="long">
+    DELETE FROM record
+    WHERE
+      id = #{id}
+  </delete>
+</mapper>
