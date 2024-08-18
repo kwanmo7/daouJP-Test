@@ -3,13 +3,13 @@
     <div id="menu">
       <VueDatePicker v-model="startDateTime" plcaeholder="Start DateTime"/>
       <VueDatePicker v-model="endDateTime" plcaeholder="End DateTime"/>
-      <button @click="getlist">시간대별 전체항목 조회</button>
-      <button @click="getlist">시간대별 가입자수 조회</button>
-      <button @click="getlist">시간대별 탈퇴자수 조회</button>
-      <button @click="getlist">시간대별 결제금액 조회</button>
-      <button @click="getlist">시간대별 사용금액 조회</button>
-      <button @click="getlist">시간대별 매출금액 조회</button>
-      <button @click="goToRegister">등록</button>
+      <v-btn @click="getlist">시간대별 전체항목 조회</v-btn>
+      <v-btn @click="getlist">시간대별 가입자수 조회</v-btn>
+      <v-btn @click="getlist">시간대별 탈퇴자수 조회</v-btn>
+      <v-btn @click="getlist">시간대별 결제금액 조회</v-btn>
+      <v-btn @click="getlist">시간대별 사용금액 조회</v-btn>
+      <v-btn @click="getlist">시간대별 매출금액 조회</v-btn>
+      <v-btn @click="goToRegister">등록</v-btn>
     </div>
     <router-view :records="records"/>
   </div>

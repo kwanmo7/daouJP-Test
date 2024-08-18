@@ -10,10 +10,10 @@ import restfulapi.dto.RecordDTO;
 public interface RestfulApiMapper {
   
   // 등록
-  RecordDTO insertRecord(@Param("record") RecordDTO recordDTO);
+  int insertRecord(@Param("record") RecordDTO recordDTO);
   
   // 수정
-  RecordDTO updateRecord(@Param("record")RecordDTO recordDTO);
+  int updateRecord(@Param("record")RecordDTO recordDTO);
 
   // 시간대별 전체항목 조회
   List<RecordDTO> selectAllRecord(@Param("start")LocalDateTime start, @Param("end")LocalDateTime end);

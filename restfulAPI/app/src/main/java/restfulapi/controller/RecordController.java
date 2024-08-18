@@ -89,7 +89,7 @@ public class RecordController {
   }
 
   // 수정
-  @PutMapping
+  @PutMapping("/update")
   public ResponseEntity<RecordDTO> updateRecord(@RequestBody RecordDTO recordDTO){
     try{
       RecordDTO updateRecord = recordService.updateRecord(recordDTO);

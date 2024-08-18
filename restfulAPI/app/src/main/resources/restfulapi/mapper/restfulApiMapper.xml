@@ -107,18 +107,19 @@
     UPDATE
       record
     SET
-      time = #{time},
-      subscribers = #{subscribers},
-      dropouts = #{dropouts},
-      payment_amount = #{paymentAmount},
-      amount_used = #{amountUsed},
-      sales_amount = #{salesAmount}
+      time = #{record.time},
+      subscribers = #{record.subscribers},
+      dropouts = #{record.dropouts},
+      payment_amount = #{record.paymentAmount},
+      amount_used = #{record.amountUsed},
+      sales_amount = #{record.salesAmount}
     WHERE
-      id = #{id}
+      id = #{record.id}
   </update>
 
   <!-- 입력 -->
-  <insert id="insertRecord" parameterType="restfulapi.dto.RecordDTO">
+  <insert id="insertRecord" parameterType="restfulapi.dto.RecordDTO"
+                      useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into record
     (
       time,
@@ -130,12 +131,12 @@
     )
     values
     (
-      #{time},
-      #{subscribers},
-      #{dropouts},
-      #{paymentAmount},
-      #{amountUsed},
-      #{salesAmount}
+      #{record.time},
+      #{record.subscribers},
+      #{record.dropouts},
+      #{record.paymentAmount},
+      #{record.amountUsed},
+      #{record.salesAmount}
     )
   </insert>
 

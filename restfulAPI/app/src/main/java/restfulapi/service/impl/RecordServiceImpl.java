@@ -1,6 +1,7 @@
 package restfulapi.service.impl;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,24 @@ public class RecordServiceImpl implements RecordService {
 
   @Override
   public RecordDTO insertRecord(RecordDTO recordDTO) {
-//    recordDTO.setFormattedTime();
-    return restfulApiMapper.insertRecord(recordDTO);
+    recordDTO.setTimeFromFormattedTime();
+    int result = restfulApiMapper.insertRecord(recordDTO);
+    if(result > 0){
+      return recordDTO;
+    }else{
+      throw new RuntimeException("Insert Fail");
+    }
   }
 
   @Override
   public RecordDTO updateRecord(RecordDTO recordDTO) {
-    return restfulApiMapper.updateRecord(recordDTO);
+    recordDTO.setTimeFromFormattedTime();
+    int result = restfulApiMapper.updateRecord(recordDTO);
+    if(result > 0){
+      return recordDTO;
+    }else{
+      throw new RuntimeException("Update Fail");
+    }
   }
 
   @Override
