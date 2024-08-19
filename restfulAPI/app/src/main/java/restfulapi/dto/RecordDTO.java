@@ -1,11 +1,11 @@
 package restfulapi.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import restfulapi.exception.InvalidFormatException;
 
 @Data
 public class RecordDTO implements Serializable {
@@ -29,6 +29,10 @@ public class RecordDTO implements Serializable {
   }
 
   public void setTimeFromFormattedTime(){
-    this.time = LocalDateTime.parse(formattedTime, DATE_TIME_FORMATTER);
+    try{
+      this.time = LocalDateTime.parse(formattedTime, DATE_TIME_FORMATTER);
+    }catch (DateTimeParseException e){
+      throw new InvalidFormatException("Invalid date format : " + formattedTime);
+    }
   }
 }

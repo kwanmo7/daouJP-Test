@@ -28,6 +28,7 @@
         <v-btn v-if="!item.isEditing" color="primary" @click="editRecord(item)">수정</v-btn>
         <v-btn v-else color="blue darken-1" @click="saveEdit(item)">저장</v-btn>
         <v-btn color="red" @click="removeRecord(item.id)">삭제</v-btn>
+        <v-btn v-if="item.isEditing" color="gray" @click="cancelEdit(item)">취소</v-btn>
       </template>
     </v-data-table>
     <br>
@@ -53,7 +54,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <p v-if="records.length === 0">데이터가 없습니다.</p>
+    <p v-if="localRecords.length === 0">데이터가 없습니다.</p>
   </v-container>
 </template>
 
@@ -105,13 +106,22 @@ export default {
       record.isEditing = true;
     };
 
+    const cancelEdit = (record) => {
+      record.isEditing = false;
+    }
+
     const saveEdit = async (record) => {
       try {
         console.log(record);
         await updateRecord(record);
         record.isEditing = false;
       } catch (error) {
-        console.error('Error updating record:', error);
+        if(error.response && error.response.status === 400){
+          alert('값을 정확히 입력하세요.(시간: yyyy-MM-dd HH) ' + error.response.data.message);
+        }else{
+          console.error('Error updating record', error);
+          alert('레코드 수정 중 오류 발생');
+        }
       }
     };
 
@@ -129,6 +139,7 @@ export default {
     const addRecord = async() =>{
       try{
         const response = await insertRecord(state.newRecord);
+        alert("등록하였습니다.");
         state.localRecords.push(response.data);
         state.showAddForm = false;
         state.newRecord = {
@@ -140,7 +151,12 @@ export default {
           salesAmount: 0
         };
       }catch(error){
-        console.error('Error Insert record', error);
+        if(error.response && error.response.status === 400){
+          alert('값을 정확히 입력하세요.(시간: yyyy-MM-dd HH) ' + error.response.data.message);
+        }else{
+          console.error('Error Insert record', error);
+          alert('레코드 추가 중 오류 발생');
+        }
       }
     }
 
@@ -148,6 +164,7 @@ export default {
       ...toRefs(state),
       editRecord,
       saveEdit,
+      cancelEdit,
       removeRecord,
       addRecord
     };

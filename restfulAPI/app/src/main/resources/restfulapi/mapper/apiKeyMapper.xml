@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="restfulapi.mapper.ApiKeyMapper">
+
+  <select id="checkApiKey" resultType="boolean">
+    SELECT
+      COUNT(*) > 0
+    FROM
+      api_key
+    WHERE
+      api_key = #{apiKey}
+  </select>
+
+  <insert id="insertApiKey" parameterType="restfulapi.dto.ApiKey">
+    INSERT INTO api_key
+      (
+        client_name,
+        api_key
+      )
+    VALUES
+      (
+        #{client_name},
+        #{api_key}
+      )
+  </insert>
+
+</mapper>

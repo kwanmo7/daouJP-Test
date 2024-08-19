@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import restfulapi.dto.RecordDTO;
+import restfulapi.exception.InvalidFormatException;
 import restfulapi.service.RecordService;
 
 @RestController
@@ -91,12 +92,8 @@ public class RecordController {
   // 수정
   @PutMapping("/update")
   public ResponseEntity<RecordDTO> updateRecord(@RequestBody RecordDTO recordDTO){
-    try{
-      RecordDTO updateRecord = recordService.updateRecord(recordDTO);
-      return ResponseEntity.ok(updateRecord);
-    } catch (Exception e){
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-    }
+    RecordDTO updateRecord = recordService.updateRecord(recordDTO);
+    return ResponseEntity.ok(updateRecord);
   }
 
   // 등록
