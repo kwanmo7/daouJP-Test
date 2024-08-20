@@ -40,7 +40,6 @@ public class RateLimitFilter implements Filter {
     String clientIp = httpRequest.getRemoteAddr();
     Bucket bucket = buckets.computeIfAbsent(clientIp, k->makeNewBucket());
     if(bucket.tryConsume(1)){
-      System.out.println("RateLimit Okay");
       chain.doFilter(request,response);
     }else{
       httpResponse.sendError(HttpStatus.TOO_MANY_REQUESTS.value(), "Too Many Requests");

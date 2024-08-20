@@ -5,7 +5,8 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const instance = axios.create({
   baseURL: 'http://localhost:8080/api',
   headers:{
-    'API-Key': apiKey
+    'API-Key': apiKey,
+    'Content-Type': 'application/json'
   }
 });
 
@@ -28,7 +29,7 @@ export const getlist = async (start, end) => {
 
 export const updateRecord = async(record) =>{
   try{
-    const response = await instance.put('http://localhost:8080/api/update', record);
+    const response = await instance.put('/update', record);
     return response.data;
   }catch(error){
     console.error('Error', error);
@@ -39,7 +40,7 @@ export const updateRecord = async(record) =>{
 export const deleteRecord = async(id) =>{
   try{
     console.log(typeof(id));
-    await instance.delete(`http://localhost:8080/api/${id}`);
+    await instance.delete(`/${id}`);
   }catch(error){
     console.error('Error', error);
     throw error;
@@ -60,7 +61,7 @@ export const insertRecord = async(record) => {
 
 export const getSubscribers = async(start, end) =>{
   try{
-    const response = await instance.get('http://localhost:8080/api/subscriber',{
+    const response = await instance.get('/subscriber',{
       params: {
         start: start,
         end: end
@@ -75,7 +76,7 @@ export const getSubscribers = async(start, end) =>{
 
 export const getDropouts = async(start, end) =>{
   try{
-    const response = await instance.get('http://localhost:8080/api/dropouts',{
+    const response = await instance.get('/dropouts',{
       params: {
         start: start,
         end: end
@@ -90,7 +91,7 @@ export const getDropouts = async(start, end) =>{
 
 export const getPaymentAmount = async(start, end) =>{
   try{
-    const response = await instance.get('http://localhost:8080/api/paymentAmount',{
+    const response = await instance.get('/paymentAmount',{
       params: {
         start: start,
         end: end
@@ -105,7 +106,7 @@ export const getPaymentAmount = async(start, end) =>{
 
 export const getAmountUsed = async(start, end) =>{
   try{
-    const response = await instance.get('http://localhost:8080/api/amountUsed',{
+    const response = await instance.get('/amountUsed',{
       params: {
         start: start,
         end: end
@@ -120,7 +121,7 @@ export const getAmountUsed = async(start, end) =>{
 
 export const getSalesAmount = async(start, end) =>{
   try{
-    const response = await instance.get('http://localhost:8080/api/salesAmount',{
+    const response = await instance.get('/salesAmount',{
       params: {
         start: start,
         end: end

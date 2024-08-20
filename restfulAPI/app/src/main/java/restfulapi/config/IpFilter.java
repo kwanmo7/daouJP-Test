@@ -39,7 +39,6 @@ public class IpFilter implements Filter {
 
     String remoteAddr = httpRequest.getRemoteAddr();
     if(allowedIpList.contains(remoteAddr)){ // 허용 IP체크
-      System.out.println("Ip Okay");
       chain.doFilter(request,response);
     }else{
       httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN,"Forbidden IP");
@@ -49,4 +48,5 @@ public class IpFilter implements Filter {
   public List<String> getAllowedIpList() {
     return allowedIpList;
   }
+
 }

@@ -19,6 +19,7 @@ public class ApiKeyFilter implements Filter {
 
   private final ApiKeyMapper apiKeyMapper;
   private static final String API_KEY_HEADER = "API-Key";
+  private static final String OPTIONS = "OPTIONS";
 
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
@@ -36,9 +37,15 @@ public class ApiKeyFilter implements Filter {
 
     String apiKey = httpRequest.getHeader(API_KEY_HEADER);
     System.out.println("apiKey : "+apiKey);
+    if(OPTIONS.equalsIgnoreCase(httpRequest.getMethod())){
+      httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+      httpResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+      httpResponse.setHeader("Access-Control-Allow-Headers", "API-Key, Content-Type");
+      httpResponse.setStatus(HttpServletResponse.SC_OK);
+      return;
+    }
 
     if(apiKey != null && apiKeyMapper.checkApiKey(apiKey)){
-      System.out.println("API Key Okay");
       chain.doFilter(request,response);
     }else{
       httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
