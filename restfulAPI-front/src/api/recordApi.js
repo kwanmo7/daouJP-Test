@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = import.meta.env.apiKey;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/api',
@@ -11,7 +11,9 @@ const instance = axios.create({
 
 export const getlist = async (start, end) => {
   try{
-    const response = await instance.get('http://localhost:8080/api/list',{
+    console.log('API-Key', apiKey);
+    console.log('Instance Headers: ', instance.defaults.headers);
+    const response = await instance.get('/list',{
       params: {
         start: start,
         end: end

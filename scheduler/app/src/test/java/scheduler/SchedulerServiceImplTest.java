@@ -24,7 +24,7 @@ public class SchedulerServiceImplTest { // Spring Boot 통합 테스트
   private File csvFile;
 
   @BeforeEach
-  void Set() throws IOException{
+  void setUp() throws IOException{
     logger.info("SchedulerServiceImpl Instance Initialized");
 
     txtFile = new File("input/test.txt");

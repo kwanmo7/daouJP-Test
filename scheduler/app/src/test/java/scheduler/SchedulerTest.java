@@ -22,7 +22,7 @@ public class SchedulerTest { // 단위 테스트
   private File inputDir;
 
   @BeforeEach
-  public void Set() throws IOException {
+  public void setUp() throws IOException {
     schedulerService = mock(SchedulerService.class);
     scheduler = new Scheduler(schedulerService);
 

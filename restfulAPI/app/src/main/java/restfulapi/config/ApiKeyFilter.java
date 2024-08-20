@@ -17,7 +17,7 @@ import restfulapi.mapper.ApiKeyMapper;
 @RequiredArgsConstructor
 public class ApiKeyFilter implements Filter {
 
-  private ApiKeyMapper apiKeyMapper;
+  private final ApiKeyMapper apiKeyMapper;
   private static final String API_KEY_HEADER = "API-Key";
 
   @Override
@@ -35,7 +35,10 @@ public class ApiKeyFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
 
     String apiKey = httpRequest.getHeader(API_KEY_HEADER);
+    System.out.println("apiKey : "+apiKey);
+
     if(apiKey != null && apiKeyMapper.checkApiKey(apiKey)){
+      System.out.println("API Key Okay");
       chain.doFilter(request,response);
     }else{
       httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
