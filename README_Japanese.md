@@ -31,20 +31,32 @@ IDE : IntelliJ Community Edition , VSCode
 
 ソースコード
   https://github.com/kwanmo7/daouJP-Test
-  - コマンド : `git clone https://github.com/kwanmo7/daouJP-Test`
+  - コマンド
+```
+`git clone https://github.com/kwanmo7/daouJP-Test`
+```
 
 - scheduler
  - application.properties 設定
+```
    # database
     spring.datasource.username=root // MySQL ID 設定
     spring.datasource.password=1111 // MySQL password 設定
     spring.datasource.url=jdbc:mysql://localhost:3306/daoujp // MySQL DB 設定
- - 実行コマンド : `./gradlew bootRun`
- - テストコード実行 : `./gradlew test`
+```
+ - 実行コマンド
+```
+`./gradlew bootRun`
+```
+ - テストコード実行
+```
+`./gradlew test`
+```
 
 
 - restfulAPI
  - application.properties 設定
+```
    # database
     spring.datasource.username=root // MySQL ID 設定
     spring.datasource.password=1111 // MySQL password 設定
@@ -54,10 +66,15 @@ IDE : IntelliJ Community Edition , VSCode
 
    # allow ip
     allowed-ips=127.0.0.1,0:0:0:0:0:0:0:1 // アクセスを許可するIP設定(127.0.0.1(IPv4), 0:0:0:0:0:0:0:1(IPv6) <-- ローカルホストアクセス)
-
-  - 実行コマンド : `./gradlew bootRun`
-  - テストコード実行 : `./gradlew test`
-
+```
+  - 実行コマンド
+```
+`./gradlew bootRun`
+```
+  - テストコード実行
+```
+`./gradlew test`
+```
     * 時間帯別全項目の照会でのみレコードの登録および修正、削除が可能
   
   - Log File Directory : 実行フォルダ/log
@@ -66,13 +83,15 @@ IDE : IntelliJ Community Edition , VSCode
   - API-Key
     .env ファイルに 'VITE_API_KEY=使用するAPIキーの値' を設定
     * api_key テーブルにあらかじめ値を入力してください。(client_nameは任意で構いません)
-
-  1. npm install
-  2. npm run dev (基本ポート : 5173)
   
+  - 実行コマンド
+```
+npm install
+npm run dev (基本ポート : 5173)
+```
 
 # DB 設定
-
+```
 CREATE database daouJP
 
 CREATE TABLE record (
@@ -91,7 +110,7 @@ CREATE TABLE api_key (
     api_key VARCHAR(255) NOT NULL,
     created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+```
 
 # プロジェクト構造
 
