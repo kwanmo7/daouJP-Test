@@ -32,28 +32,31 @@ IDE : IntelliJ Community Edition , VSCode
 소스 코드
   https://github.com/kwanmo7/daouJP-Test
   - 커맨드
-  ```
-  git clone https://github.com/kwanmo7/daouJP-Test
-  ```
+```
+git clone https://github.com/kwanmo7/daouJP-Test
+```
 
 - scheduler
  - application.properties 설정
+```
    # database
     spring.datasource.username=root // MySQL ID 설정
     spring.datasource.password=1111 // MySQL password 설정
     spring.datasource.url=jdbc:mysql://localhost:3306/daoujp // MySQL DB 설정
+```
  - 실행 커맨드
-   ```
-   ./gradlew bootRun
-   ```
+```
+./gradlew bootRun
+```
  - 테스트코드 실행
-   ```
-   ./gradlew test
-   ```
+```
+./gradlew test
+```
 
 
 - restfulAPI
  - application.properties 설정
+```
    # database
     spring.datasource.username=root // MySQL ID 설정
     spring.datasource.password=1111 // MySQL password 설정
@@ -63,15 +66,15 @@ IDE : IntelliJ Community Edition , VSCode
 
    # allow ip
     allowed-ips=127.0.0.1,0:0:0:0:0:0:0:1 // 접근 허용할 IP 설정(127.0.0.1(IPv4), 0:0:0:0:0:0:0:1(IPv6) <-- LocalHost 접근)
-
+```
   - 실행 커맨드
-    ```
-    ./gradlew bootRun
-    ```
+```
+./gradlew bootRun
+```
   - 테스트코드 실행
-    ```
-    ./gradlew test
-    ```
+```
+./gradlew test
+```
 
     * 시간대별 전체항목 조회에서만 레코드 등록 및 수정 , 삭제 가능
   
@@ -81,15 +84,11 @@ IDE : IntelliJ Community Edition , VSCode
   - API-Key
     .env 파일에 'VITE_API_KEY=사용할 API-Key 값' 을 설정
     * api_key 테이블에 미리 값을 입력해 주세요.(client_name은 아무렇게나 해도 무방)
-
-  1.
-  ```
-  npm install
-  ```
-  2.
-  ```
-  npm run dev (기본 포트 : 5173)
-  ```
+- 실행 커맨드
+```
+npm install
+npm run dev (기본 포트 : 5173)
+```
   
 # DB 설정
 ```
