@@ -96,6 +96,7 @@ CREATE TABLE api_key (
 # プロジェクト構造
 
 - scheduler
+```
 project-root/
 ├── java/
 │   └── scheduler/
@@ -125,10 +126,12 @@ project-root/
     │       └── SchedulerTest.java
     └── resources/
         └── application-test.properties
+```
 
 
 
 - restfulAPI
+```
 project-root/
 ├── java/
 │   └── restfulapi/
@@ -169,10 +172,12 @@ project-root/
     │       └── RecordController.java
     └── resources/
         └── application-test.properties
+```
 
 
 - restfulAPI-front
 
+```
 restfulAPI-front/
 ├── jsconfig.json
 ├── package-lock.json
@@ -194,3 +199,4 @@ restfulAPI-front/
 │   ├── App.vue
 │   └── main.js
 └── (その他のプロジェクト関連ファイル)
+```
