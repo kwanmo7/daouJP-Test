@@ -24,6 +24,7 @@ public class IpFilter implements Filter {
 
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
+    // application.properties에 설정한 허용 아이피들의 구분자를 통해 분리
     allowedIpList = Arrays.asList(allowedIps.split(","));
   }
 

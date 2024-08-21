@@ -13,18 +13,4 @@
     WHERE
       api_key = #{apiKey}
   </select>
-
-  <insert id="insertApiKey" parameterType="restfulapi.dto.ApiKey">
-    INSERT INTO api_key
-      (
-        client_name,
-        api_key
-      )
-    VALUES
-      (
-        #{client_name},
-        #{api_key}
-      )
-  </insert>
-
 </mapper>

@@ -24,11 +24,11 @@ public class RecordDTO implements Serializable {
   private int salesAmount;
   private String formattedTime; // yyyy-MM-dd HH 형태의 시간
 
-  public void setFormattedTime(){
+  public void setFormattedTime(){ // LocalDateTime을 String 형태의 yyyy-MM-dd HH 로 변환
     this.formattedTime =  time.format(DATE_TIME_FORMATTER);
   }
 
-  public void setTimeFromFormattedTime(){
+  public void setTimeFromFormattedTime(){ // String 형태의 yyyy-MM-dd HH를 LocalDateTime으로 변환
     try{
       this.time = LocalDateTime.parse(formattedTime, DATE_TIME_FORMATTER);
     }catch (DateTimeParseException e){

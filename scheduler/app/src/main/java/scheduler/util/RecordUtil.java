@@ -16,7 +16,7 @@ public class RecordUtil {
       record.setAmountUsed(Integer.parseInt(input[4].replace(",","")));
       record.setSalesAmount(Integer.parseInt(input[5].replace(",","")));
     }catch (Exception e){
-      return null;
+      return null; // 형변환 중 오류 발생시 null로 return
     }
     return record;
   }
@@ -31,7 +31,7 @@ public class RecordUtil {
       record.setAmountUsed(Integer.parseInt(csvRecord.get(4).replace(",","")));
       record.setSalesAmount(Integer.parseInt(csvRecord.get(5).replace(",","")));
     }catch (Exception e){
-      return null;
+      return null; // 형변환 중 오류 발생시 null로 return
     }
     return record;
   }

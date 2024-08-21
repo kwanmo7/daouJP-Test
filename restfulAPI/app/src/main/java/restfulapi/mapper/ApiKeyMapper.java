@@ -7,5 +7,4 @@ import restfulapi.dto.ApiKey;
 public interface ApiKeyMapper {
   boolean checkApiKey(String apiKey);
 
-  int insertApiKey(ApiKey apiKey);
 }

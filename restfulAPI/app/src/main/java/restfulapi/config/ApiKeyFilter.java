@@ -36,8 +36,7 @@ public class ApiKeyFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
 
     String apiKey = httpRequest.getHeader(API_KEY_HEADER);
-    System.out.println("apiKey : "+apiKey);
-    if(OPTIONS.equalsIgnoreCase(httpRequest.getMethod())){
+    if(OPTIONS.equalsIgnoreCase(httpRequest.getMethod())){ // preflight 요청에 OK Return , Methods & Headers 허용 설정
       httpResponse.setHeader("Access-Control-Allow-Origin", "*");
       httpResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
       httpResponse.setHeader("Access-Control-Allow-Headers", "API-Key, Content-Type");

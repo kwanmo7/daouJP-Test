@@ -23,7 +23,7 @@ public class LoggingFilter implements Filter {
                                   DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
   private static final DateTimeFormatter LOG_FILE_FORMATTER =
                                   DateTimeFormatter.ofPattern("yyyyMMddHH");
-  private static final String LOG_DIRECTORY = "/log";
+  private static final String LOG_DIRECTORY = "./log";
   private static final String NAME = "restfulapi";
 
   @Override
@@ -50,7 +50,8 @@ public class LoggingFilter implements Filter {
     LocalDateTime responseTime = LocalDateTime.now();
 
     long duration = Duration.between(requestTime,responseTime).toMillis();
-
+    
+    // 로그 파일에 작성될 내용
     String message = String.format("[%s]-[INFO]-[%s]-Request: %s, Response: %s, Duration: %d ms",
                                     requestTime.format(DATE_TIME_FORMATTER),
                                     httpRequest.getMethod(),

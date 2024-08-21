@@ -38,6 +38,7 @@ public class RateLimitFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
 
     String clientIp = httpRequest.getRemoteAddr();
+    // 클라이언트의 IP를 통해 bucket을 가져오거나 없는 경우 새로 생성
     Bucket bucket = buckets.computeIfAbsent(clientIp, k->makeNewBucket());
     if(bucket.tryConsume(1)){
       chain.doFilter(request,response);
@@ -47,6 +48,7 @@ public class RateLimitFilter implements Filter {
   }
 
   protected Bucket makeNewBucket(){
+    // 1분에 60개의 요청을 처리할 수 있도록 함
     Bandwidth limit = Bandwidth.classic(60, Refill.greedy(60, Duration.ofMinutes(1)));
     return Bucket4j.builder().addLimit(limit).build();
   }
