@@ -31,7 +31,7 @@ IDE : IntelliJ Community Edition , VSCode
 
 ソースコード
   https://github.com/kwanmo7/daouJP-Test
-  - コマンド
+- コマンド
 ```
 `git clone https://github.com/kwanmo7/daouJP-Test`
 ```
@@ -44,11 +44,11 @@ IDE : IntelliJ Community Edition , VSCode
     spring.datasource.password=1111 // MySQL password 設定
     spring.datasource.url=jdbc:mysql://localhost:3306/daoujp // MySQL DB 設定
 ```
- - 実行コマンド
+- 実行コマンド
 ```
 `./gradlew bootRun`
 ```
- - テストコード実行
+- テストコード実行
 ```
 `./gradlew test`
 ```
@@ -84,7 +84,7 @@ IDE : IntelliJ Community Edition , VSCode
     .env ファイルに 'VITE_API_KEY=使用するAPIキーの値' を設定
     * api_key テーブルにあらかじめ値を入力してください。(client_nameは任意で構いません)
   
-  - 実行コマンド
+- 実行コマンド
 ```
 npm install
 npm run dev (基本ポート : 5173)
