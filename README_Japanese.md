@@ -1,13 +1,12 @@
-# daouJP-Test
+# javaScheduler
 
-https://github.com/kwanmo7/daouJP-Test
+https://github.com/kwanmo7/javaScheduler
 
 使用言語およびフレームワーク : Java 17 , SpringBoot 2.7.18 , Vue.js, Mybatis
 使用 DB : MySQL
 IDE : IntelliJ Community Edition , VSCode
 
-# scheduler - スケジューラ実装問題
-- 1番目の問題の実装
+# scheduler - スケジューラ実装
 - 毎日深夜0時に実行
 - 読み込めるファイル形式 : csv, txt
 - ファイルごとの区切り文字
@@ -16,11 +15,9 @@ IDE : IntelliJ Community Edition , VSCode
 - '実行フォルダ/input/' : inputFile パス
 
 # restfulAPI
-- 2~3番目の問題に対するフロントエンド実装
 - Java , SpringBoot 使用
 
 # restfulAPI-front
-- 2~3番目の問題に対するフロントエンド実装
 - VITE(Vue.js) 使用
 
 # 実行環境
@@ -30,10 +27,10 @@ IDE : IntelliJ Community Edition , VSCode
  - restfulAPI-front : VSCode
 
 ソースコード
-  https://github.com/kwanmo7/daouJP-Test
+  https://github.com/kwanmo7/javaScheduler
 - コマンド
 ```
-`git clone https://github.com/kwanmo7/daouJP-Test`
+`git clone https://github.com/kwanmo7/javaScheduler`
 ```
 
 - scheduler
@@ -42,7 +39,7 @@ IDE : IntelliJ Community Edition , VSCode
    # database
     spring.datasource.username=root // MySQL ID 設定
     spring.datasource.password=1111 // MySQL password 設定
-    spring.datasource.url=jdbc:mysql://localhost:3306/daoujp // MySQL DB 設定
+    spring.datasource.url=jdbc:mysql://localhost:3306/javaScheduler // MySQL DB 設定
 ```
 - 実行コマンド
 ```
@@ -60,7 +57,7 @@ IDE : IntelliJ Community Edition , VSCode
    # database
     spring.datasource.username=root // MySQL ID 設定
     spring.datasource.password=1111 // MySQL password 設定
-    spring.datasource.url=jdbc:mysql://localhost:3306/daoujp // MySQL DB 設定
+    spring.datasource.url=jdbc:mysql://localhost:3306/javaScheduler // MySQL DB 設定
    # server
     server.port=8080 // 使用するポート番号設定(基本ポート: 8080)
 
@@ -92,7 +89,7 @@ npm run dev (基本ポート : 5173)
 
 # DB 設定
 ```
-CREATE database daouJP
+CREATE database javaScheduler
 
 CREATE TABLE record (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
